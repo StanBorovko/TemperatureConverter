@@ -19,16 +19,16 @@
 <main class="w-75 m-auto">
 
     <section class="input">
-        <form action="/" method="post">
+        <form id="input-form" action="/">
             <div class="input-group mb-3">
-                <input type="text"
+                <input type="text" id="input-field"
                        class="form-control"
                        placeholder="Please, enter degrees with dimension (example: 26С, 299K, 79F)"
                        aria-label="Please, enter degrees with dimension (example: 26С, 299K, 79F)"
                        aria-describedby="button-convert">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary"
-                            type="button"
+                            type="submit"
                             id="button-convert">Convert
                     </button>
                 </div>
@@ -36,34 +36,18 @@
         </form>
     </section>
 
-    <section class="result  mb-3">
+    <section class="mb-3">
         <h4>Conversion results:</h4>
-        <ul>
-            <li>Celsius:
-                <span class="degrees-C">26</span>
-                C
-            </li>
-            <li>Fahrenheit:
-                <span class="degrees-F">79</span>
-                F
-            </li>
-            <li>Kelvin:
-                <span class="degrees-K">299</span>
-                K
-            </li>
+        <ul  id="result" >
+
         </ul>
     </section>
-    <section class="toJSON mb-3">
+    <section class="mb-3">
         <h4>In JSON notation:</h4>
-        <pre class="green">
-{
-    celsius: 26,
-    fahrenheit: 79,
-    kelvin: 299
-}
-        </pre>
+        <pre  id="JSON"  class="green"></pre>
     </section>
 
 </main>
+<script src="js/main.js"></script>
 </body>
 </html>
