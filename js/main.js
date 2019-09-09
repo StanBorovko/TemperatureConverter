@@ -8,21 +8,6 @@
         FahrenheitToKelvin = degree => parseFloat(CelsiusToKelvin(FahrenheitToCelsius(degree)).toFixed(2)),
         KelvinToFahrenheit = degree => parseFloat(CelsiusToFahrenheit(KelvinToCelsius(degree)).toFixed(2));
 
-    /*
-    console.log('0C ->', CelsiusToFahrenheit(0), 'F'); //0C -> 32.00 F
-    console.log('20C ->', CelsiusToFahrenheit(20), 'F'); //20C -> 68.00 F
-    console.log('29C ->', CelsiusToFahrenheit(29), 'F'); //29C -> 84.20 F
-
-    console.log('32F ->', FahrenheitToCelsius(32), 'C'); //32.00 F -> 0C
-    console.log('68F ->', FahrenheitToCelsius(68), 'C'); //68.00 F -> 20C
-    console.log('84.2F ->', FahrenheitToCelsius(84.2), 'C'); //84.20 F -> 29C
-
-    console.log('20C ->', CelsiusToKelvin(20), 'K'); //20C -> 293.15K
-    console.log('293.15K ->', KelvinToCelsius(293.15), 'C'); //293.15K -> 20C
-
-    console.log('68F ->', FahrenheitToKelvin(68), 'K'); //68F -> 293.15K
-    console.log('293.15K ->', KelvinToFahrenheit(293.15), 'F'); //293.15K -> 68F
-    */
 
 
     function parseInput(input) {
@@ -32,7 +17,6 @@
         const parseResult = {error: false, parsed: null},
             pattern = /(?<degree>[\d]+)(?<dimension>[cfk])/i,
             matched = input.match(pattern);
-        // console.log(matched);
         if (matched) {
             parseResult.parsed = {
                 degree: matched.groups.degree,
@@ -58,11 +42,9 @@
                 fahrenheit: null,
                 kelvin: null
             };
-        console.log('degree', degree, 'dimension', dimension);
         if (dimension === 'C') {
             output.celsius = parseFloat(degree);
             output.fahrenheit = CelsiusToFahrenheit(degree);
-            console.log(output);
             output.kelvin = CelsiusToKelvin(degree);
         } else if (dimension === 'F') {
             output.celsius = FahrenheitToCelsius(degree);
@@ -78,18 +60,12 @@
         return JSON.stringify(output);
     }
 
-    // console.log(convert('299K'));
-    // console.log(convert('28F'));
-    // console.log(convert('12611vsdfvdf'));
-    // console.log(convert('99N'));
-
     /*Render*/
 
     function updatePage(convertedValues) {
         /*update elements with new converted values*/
         const {celsius, fahrenheit, kelvin} = JSON.parse(convertedValues),
             resultList = document.getElementById('result');
-        // console.log('resultList', resultList, 'listItems', listItems);
         resultList.innerHTML = `
 <li>Celsius: <span>${celsius}</span>C</li>
 <li>Fahrenheit: <span>${fahrenheit}</span>F</li>
