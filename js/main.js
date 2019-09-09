@@ -15,7 +15,7 @@
         if it can be find - return values,
         in other case return error*/
         const parseResult = {error: false, parsed: null},
-            pattern = /(?<degree>[\d]+)(?<dimension>[cfk])/i,
+            pattern = /(?<degree>[\d.,]*\d+)(?<dimension>[cfk])/i,
             matched = input.match(pattern);
         if (matched) {
             parseResult.parsed = {
