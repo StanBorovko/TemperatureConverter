@@ -9,7 +9,6 @@
         KelvinToFahrenheit = degree => parseFloat(CelsiusToFahrenheit(KelvinToCelsius(degree)).toFixed(2));
 
 
-
     function parseInput(input) {
         /*Parse input string for degrees with dimensions,
         if it can be find - return values,
@@ -64,15 +63,21 @@
 
     function updatePage(convertedValues) {
         /*update elements with new converted values*/
-        const {celsius, fahrenheit, kelvin} = JSON.parse(convertedValues),
-            resultList = document.getElementById('result');
-        resultList.innerHTML = `
+        const resultList = document.getElementById('result'),
+            jsonList = document.getElementById('JSON');
+
+        try {
+            const {celsius, fahrenheit, kelvin} = JSON.parse(convertedValues);
+            resultList.innerHTML = `
 <li>Celsius: <span>${celsius}</span>C</li>
 <li>Fahrenheit: <span>${fahrenheit}</span>F</li>
 <li>Kelvin: <span>${kelvin}</span>K</li>
 `;
-        const jsonList = document.getElementById('JSON');
-        jsonList.innerText = convertedValues;
+            jsonList.innerText = convertedValues;
+        }
+        catch (e) {
+            resultList.innerHTML = `<div>${convertedValues}</div>`;
+        }
     }
 
     const inputForm = document.getElementById('input-form');
