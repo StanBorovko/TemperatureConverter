@@ -77,6 +77,7 @@
         }
         catch (e) {
             resultList.innerHTML = `<div>${convertedValues}</div>`;
+            jsonList.innerText = null;
         }
     }
 
