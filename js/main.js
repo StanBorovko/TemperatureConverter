@@ -11,7 +11,7 @@
 
     function parseInput(input) {
         /*Parse input string for degrees with dimensions,
-        if it can be find - return values,
+        if it can be find - return object of degrees values and dimension,
         in other case return error*/
         const parseResult = {error: false, parsed: null},
             pattern = /(?<degree>\d+[.,]?\d+)(?<dimension>[cfk])/i,
@@ -67,6 +67,7 @@
             jsonList = document.getElementById('JSON');
 
         try {
+            //if convertedValues contain three values, show them
             const {celsius, fahrenheit, kelvin} = JSON.parse(convertedValues);
             resultList.innerHTML = `
 <li>Celsius: <span>${celsius}</span>C</li>
@@ -76,6 +77,7 @@
             jsonList.innerText = convertedValues;
         }
         catch (e) {
+            //if convertedValues contain error message, show it
             resultList.innerHTML = `<div>${convertedValues}</div>`;
             jsonList.innerText = null;
         }
@@ -84,6 +86,7 @@
     const inputForm = document.getElementById('input-form');
 
     inputForm.addEventListener('submit', event => {
+        //on form submit event page will be updated with converted values or error message
         event.preventDefault();
         const enteredString = document.getElementById('input-field').value,
             convertedValues = convert(enteredString);
@@ -91,5 +94,4 @@
 
     })
 
-})
-();
+})();
